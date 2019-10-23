@@ -1,0 +1,22 @@
+overwrite: true
+# schema: https://graphql-voter-app.herokuapp.com/
+schema: http://localhost:5000/graphql
+generates:
+    src/types.ts:
+     plugins:
+      - add: /* tslint:disable */
+      - typescript
+    src/components/:
+       documents: src/**/*.graphql
+       preset: near-operation-file
+       presetConfig:
+            baseTypesPath: "../types"
+            extension: ".tsx"
+       plugins:
+            - typescript-operations
+            - typescript-stencil-apollo
+       config:
+        componentType: class
+        globalNamespace: true
+
+        

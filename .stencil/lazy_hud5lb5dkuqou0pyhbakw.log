@@ -1,0 +1,23 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+import ApolloClient from 'apollo-boost';
+const client = new ApolloClient({
+    uri: 'https://graphql-voter-app.herokuapp.com/'
+});
+export const MyComponentWithCodegen = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    renderUpvoteButton(postId) {
+        return (h("apollo-upvote-post", { renderer: upvotePost => h("button", { onClick: () => upvotePost({ variables: { postId } }) }, "Upvote") }));
+    }
+    render() {
+        return (h("apollo-provider", { client: client }, h("apollo-all-s", { renderer: ({ data, loading }) => {
+                if (loading) {
+                    return 'Loading...';
+                }
+                return (h("ul", null, data.posts.map(post => (h("li", null, post.title, " by ", post.author.firstName, " ", post.author.lastName, " (", post.votes, " votes)", ' ', this.renderUpvoteButton(post.id))))));
+            } })));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:my-component-with-codegen"; }
+};

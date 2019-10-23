@@ -1,0 +1,18 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+import gql from 'graphql-tag';
+const AGENT_QUERY = gql `
+  query AgentQuery {
+    agents {
+        name
+    }
+  }
+`;
+export const AllPostsComponent = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        return h("apollo-query", { query: AGENT_QUERY, renderer: this.renderer });
+    }
+};

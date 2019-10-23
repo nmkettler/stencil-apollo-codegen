@@ -1,0 +1,20 @@
+# query allPosts {
+#   posts {
+#     id
+#     title
+#     votes
+#     author {
+#       id
+#       firstName
+#       lastName
+#     }
+#   }
+# }
+  query AgentQuery {
+    agents {
+        name
+        agent_online,
+        id,
+        newAgentName
+    }
+  }

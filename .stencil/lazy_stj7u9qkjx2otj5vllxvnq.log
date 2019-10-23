@@ -1,0 +1,37 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+const UpvotePostDocument = {
+    "kind": "Document",
+    "definitions": [
+        {
+            "kind": "OperationDefinition",
+            "operation": "mutation",
+            "name": {
+                "kind": "Name", "value": "upvotePost"
+            },
+            "variableDefinitions": [{
+                    "kind": "VariableDefinition",
+                    "variable": { "kind": "Variable",
+                        "name": { "kind": "Name",
+                            "value": "postId" } },
+                    "type": {
+                        "kind": "NonNullType",
+                        "type": { "kind": "NamedType",
+                            "name": { "kind": "Name", "value": "Int" } }
+                    },
+                    "directives": []
+                }],
+            "directives": [],
+            "selectionSet": { "kind": "SelectionSet",
+                "selections": [{ "kind": "Field", "name": { "kind": "Name", "value": "upvotePost" }, "arguments": [{ "kind": "Argument", "name": { "kind": "Name", "value": "postId" }, "value": { "kind": "Variable", "name": { "kind": "Name", "value": "postId" } } }], "directives": [], "selectionSet": { "kind": "SelectionSet", "selections": [{ "kind": "Field", "name": { "kind": "Name", "value": "id" }, "arguments": [], "directives": [] }, { "kind": "Field", "name": { "kind": "Name", "value": "votes" }, "arguments": [], "directives": [] }] } }] }
+        }
+    ]
+};
+export const UpvotePostComponent = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        return h("apollo-mutation", { mutation: UpvotePostDocument, renderer: this.renderer });
+    }
+};

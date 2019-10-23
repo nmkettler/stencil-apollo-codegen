@@ -1,0 +1,19 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+import gql from 'graphql-tag';
+const AGENT_QUERY = gql `
+  query AgentQuery {
+    launches {
+        name
+    }
+  }
+`;
+const AllPostsDocument = { "kind": "Document", "definitions": [{ "kind": "OperationDefinition", "operation": "query", "name": { "kind": "Name", "value": "allPosts" }, "variableDefinitions": [], "directives": [], "selectionSet": { "kind": "SelectionSet", "selections": [{ "kind": "Field", "name": { "kind": "Name", "value": "posts" }, "arguments": [], "directives": [], "selectionSet": { "kind": "SelectionSet", "selections": [{ "kind": "Field", "name": { "kind": "Name", "value": "id" }, "arguments": [], "directives": [] }, { "kind": "Field", "name": { "kind": "Name", "value": "title" }, "arguments": [], "directives": [] }, { "kind": "Field", "name": { "kind": "Name", "value": "votes" }, "arguments": [], "directives": [] }, { "kind": "Field", "name": { "kind": "Name", "value": "author" }, "arguments": [], "directives": [], "selectionSet": { "kind": "SelectionSet", "selections": [{ "kind": "Field", "name": { "kind": "Name", "value": "id" }, "arguments": [], "directives": [] }, { "kind": "Field", "name": { "kind": "Name", "value": "firstName" }, "arguments": [], "directives": [] }, { "kind": "Field", "name": { "kind": "Name", "value": "lastName" }, "arguments": [], "directives": [] }] } }] } }] } }] };
+export const AllPostsComponent = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        return h("apollo-query", { query: AGENT_QUERY, renderer: this.renderer });
+    }
+};
