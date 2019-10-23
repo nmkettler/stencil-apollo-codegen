@@ -1,13 +1,1 @@
-# mutation upvotePost($postId: Int!) {
-#   upvotePost(postId: $postId) {
-#     id
-#     votes
-#   }
-# }
-
-mutation agentOnlineStatus($postId: Int!) {
-  updateStatus(postId: $postId) {
-    name
-    agent_online
-  }
-}
+mutation updateAgent { newAgentName }

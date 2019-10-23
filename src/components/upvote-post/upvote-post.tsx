@@ -6,54 +6,31 @@ import { Component, Prop, h } from '@stencil/core';
 
 
     declare global { 
-      export type UpvotePostMutationVariables = {
-  postId: Types.Scalars['Int']
-};
+      export type UpdateAgentMutationVariables = {};
 
 
-export type UpvotePostMutation = (
+export type UpdateAgentMutation = (
   { __typename?: 'Mutation' }
-  & { upvotePost: Types.Maybe<(
-    { __typename?: 'Post' }
-    & Pick<Types.Post, 'id' | 'votes'>
-  )> }
+  & Pick<Types.Mutation, 'newAgentName'>
 );
  
     }
           
 
 
- const UpvotePostDocument = gql`
-    mutation upvotePost($id: Int!) {
-  upvotePost(id: $id) {
-    id
-    votes
-  }
+ const UpdateAgentDocument = gql`
+    mutation updateAgent {
+  newAgentName
 }
     `;
-    
-const CHANGE_AGENT_STATUS = gql`
-#   mutation AddTodo($id: Int!, $name: String!) {
-#     upvotePost(id: $id, name: $name) {
-#       id
-#       name
-#     }
-#   }
-    mutation updateAgent { newAgentName }
-`;
+
 @Component({
-    tag: 'apollo-upvote-post'
+    tag: 'apollo-update-agent'
 })
-// export class UpvotePostComponent {
-//     @Prop() renderer: import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
-//     render() {
-//         return <apollo-mutation mutation={ UpvotePostDocument } renderer={ this.renderer } />;
-//     }
-// }
-export class UpvotePostComponent {
-    @Prop() renderer: import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
+export class UpdateAgentComponent {
+    @Prop() renderer: import('stencil-apollo').MutationRenderer<UpdateAgentMutation, UpdateAgentMutationVariables>;
     render() {
-        return <apollo-mutation mutation={CHANGE_AGENT_STATUS} renderer={this.renderer} />;
+        return <apollo-mutation mutation={ UpdateAgentDocument } renderer={ this.renderer } />;
     }
 }
       

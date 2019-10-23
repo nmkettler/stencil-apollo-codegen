@@ -7,19 +7,16 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-import {
-  AllPostsQuery,
-  AllPostsQueryVariables,
-} from './components/all-posts/all-posts';
+
 
 export namespace Components {
-  interface ApolloAllPosts {
-    'renderer': import('stencil-apollo').QueryRenderer<AllPostsQuery, AllPostsQueryVariables>;
+  interface ApolloAllAgents {
+    'renderer': import('stencil-apollo').QueryRenderer<AllAgentsQuery, AllAgentsQueryVariables>;
   }
-  interface ApolloUpvotePost {
-    'renderer': import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
+  interface ApolloUpdateAgent {
+    'renderer': import('stencil-apollo').MutationRenderer<UpdateAgentMutation, UpdateAgentMutationVariables>;
   }
-  interface MyComponentWithCodegen {
+  interface ListAllAgents {
     'first': string;
     'last': string;
   }
@@ -28,46 +25,46 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLApolloAllPostsElement extends Components.ApolloAllPosts, HTMLStencilElement {}
-  const HTMLApolloAllPostsElement: {
-    prototype: HTMLApolloAllPostsElement;
-    new (): HTMLApolloAllPostsElement;
+  interface HTMLApolloAllAgentsElement extends Components.ApolloAllAgents, HTMLStencilElement {}
+  const HTMLApolloAllAgentsElement: {
+    prototype: HTMLApolloAllAgentsElement;
+    new (): HTMLApolloAllAgentsElement;
   };
 
-  interface HTMLApolloUpvotePostElement extends Components.ApolloUpvotePost, HTMLStencilElement {}
-  const HTMLApolloUpvotePostElement: {
-    prototype: HTMLApolloUpvotePostElement;
-    new (): HTMLApolloUpvotePostElement;
+  interface HTMLApolloUpdateAgentElement extends Components.ApolloUpdateAgent, HTMLStencilElement {}
+  const HTMLApolloUpdateAgentElement: {
+    prototype: HTMLApolloUpdateAgentElement;
+    new (): HTMLApolloUpdateAgentElement;
   };
 
-  interface HTMLMyComponentWithCodegenElement extends Components.MyComponentWithCodegen, HTMLStencilElement {}
-  const HTMLMyComponentWithCodegenElement: {
-    prototype: HTMLMyComponentWithCodegenElement;
-    new (): HTMLMyComponentWithCodegenElement;
+  interface HTMLListAllAgentsElement extends Components.ListAllAgents, HTMLStencilElement {}
+  const HTMLListAllAgentsElement: {
+    prototype: HTMLListAllAgentsElement;
+    new (): HTMLListAllAgentsElement;
   };
   interface HTMLElementTagNameMap {
-    'apollo-all-posts': HTMLApolloAllPostsElement;
-    'apollo-upvote-post': HTMLApolloUpvotePostElement;
-    'my-component-with-codegen': HTMLMyComponentWithCodegenElement;
+    'apollo-all-agents': HTMLApolloAllAgentsElement;
+    'apollo-update-agent': HTMLApolloUpdateAgentElement;
+    'list-all-agents': HTMLListAllAgentsElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface ApolloAllPosts {
-    'renderer'?: import('stencil-apollo').QueryRenderer<AllPostsQuery, AllPostsQueryVariables>;
+  interface ApolloAllAgents {
+    'renderer'?: import('stencil-apollo').QueryRenderer<AllAgentsQuery, AllAgentsQueryVariables>;
   }
-  interface ApolloUpvotePost {
-    'renderer'?: import('stencil-apollo').MutationRenderer<UpvotePostMutation, UpvotePostMutationVariables>;
+  interface ApolloUpdateAgent {
+    'renderer'?: import('stencil-apollo').MutationRenderer<UpdateAgentMutation, UpdateAgentMutationVariables>;
   }
-  interface MyComponentWithCodegen {
+  interface ListAllAgents {
     'first'?: string;
     'last'?: string;
   }
 
   interface IntrinsicElements {
-    'apollo-all-posts': ApolloAllPosts;
-    'apollo-upvote-post': ApolloUpvotePost;
-    'my-component-with-codegen': MyComponentWithCodegen;
+    'apollo-all-agents': ApolloAllAgents;
+    'apollo-update-agent': ApolloUpdateAgent;
+    'list-all-agents': ListAllAgents;
   }
 }
 
@@ -77,9 +74,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'apollo-all-posts': LocalJSX.ApolloAllPosts & JSXBase.HTMLAttributes<HTMLApolloAllPostsElement>;
-      'apollo-upvote-post': LocalJSX.ApolloUpvotePost & JSXBase.HTMLAttributes<HTMLApolloUpvotePostElement>;
-      'my-component-with-codegen': LocalJSX.MyComponentWithCodegen & JSXBase.HTMLAttributes<HTMLMyComponentWithCodegenElement>;
+      'apollo-all-agents': LocalJSX.ApolloAllAgents & JSXBase.HTMLAttributes<HTMLApolloAllAgentsElement>;
+      'apollo-update-agent': LocalJSX.ApolloUpdateAgent & JSXBase.HTMLAttributes<HTMLApolloUpdateAgentElement>;
+      'list-all-agents': LocalJSX.ListAllAgents & JSXBase.HTMLAttributes<HTMLListAllAgentsElement>;
     }
   }
 }

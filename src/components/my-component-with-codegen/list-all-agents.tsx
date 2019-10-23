@@ -10,8 +10,8 @@ const client = new ApolloClient({
 });
 
 @Component({
-  tag: 'my-component-with-codegen',
-  styleUrl: 'my-component-with-codegen.css'
+  tag: 'list-all-agents',
+  styleUrl: 'list-all-agents.css'
 })
 export class MyComponentWithCodegen {
   @Prop() first: string;
@@ -28,7 +28,7 @@ export class MyComponentWithCodegen {
   changeStatus (newAgentName: string) {
     console.log('burrito')
     return (
-      <apollo-upvote-post
+      <apollo-update-agent
         renderer={updateAgent => <button onClick={() => updateAgent({ variables: {  newAgentName } })}>Upvote</button>}
       />
     )
@@ -46,7 +46,7 @@ export class MyComponentWithCodegen {
     return (
       <apollo-provider client={client}>
         {this.renderTestButton()}
-        <apollo-all-posts
+        <apollo-all-agents
           renderer={({ data, loading }) => {
             console.log('taco', data)
             logger.info(`Getting data: ${data}`);

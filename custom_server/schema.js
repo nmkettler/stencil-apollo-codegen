@@ -9,6 +9,7 @@ const {
   GraphQLSchema
 } = require('graphql');
 
+// let name = 'Noah One'
 // Launch Type
 const LaunchType = new GraphQLObjectType({
   name: 'Launch',
@@ -18,7 +19,22 @@ const LaunchType = new GraphQLObjectType({
     launch_year: { type: GraphQLString },
     launch_date_local: { type: GraphQLString },
     launch_success: { type: GraphQLBoolean },
-    rocket: { type: RocketType }
+    rocket: { type: RocketType },
+    // name: { type: GraphQLString, resolve: () => name },
+    name: { type: GraphQLString },
+    id: { type: GraphQLInt },
+    agent_online: { type: GraphQLBoolean },
+    newAgentName: { type: GraphQLString }
+  })
+});
+
+const AgentMutations = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: () => ({
+    newAgentName: {
+      type: GraphQLString,
+      resolve: () => 'Noah Mutated'
+    }
   })
 });
 
@@ -36,12 +52,15 @@ const RocketType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    launches: {
+    agents: {
       type: new GraphQLList(LaunchType),
       resolve(parent, args) {
         return axios
-          .get('https://api.spacexdata.com/v3/launches')
-          .then(res => res.data);
+          // .get('https://api.spacexdata.com/v3/launches')
+          .get('/custom_server/public/dummy_api.json',
+            { proxy: { host: '127.0.0.1', port: 5000 } })
+          .then((res => res.data))
+          .catch(e => e.data);
       }
     },
     launch: {
@@ -73,10 +92,13 @@ const RootQuery = new GraphQLObjectType({
           .get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
           .then(res => res.data);
       }
-    }
+    },
   }
 });
 
+
+
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: AgentMutations
 });

@@ -8,58 +8,48 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: any,
 };
 
-
-export type Author = {
-   __typename?: 'Author',
-  id: Scalars['Int'],
-  firstName?: Maybe<Scalars['String']>,
-  lastName?: Maybe<Scalars['String']>,
-  posts?: Maybe<Array<Maybe<Post>>>,
+export type Launch = {
+   __typename?: 'Launch',
+  flight_number?: Maybe<Scalars['Int']>,
+  mission_name?: Maybe<Scalars['String']>,
+  launch_year?: Maybe<Scalars['String']>,
+  launch_date_local?: Maybe<Scalars['String']>,
+  launch_success?: Maybe<Scalars['Boolean']>,
+  rocket?: Maybe<Rocket>,
+  name?: Maybe<Scalars['String']>,
+  id?: Maybe<Scalars['Int']>,
+  agent_online?: Maybe<Scalars['Boolean']>,
+  newAgentName?: Maybe<Scalars['String']>,
 };
 
-export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
-}
-
-/** this schema allows the following mutation: */
-// export type Mutation = {
-//    __typename?: 'Mutation',
-//   upvotePost?: Maybe<Post>,
-// };
 export type Mutation = {
-  __typename?: 'Mutation',
-  newAgentName?: Maybe<Post>,
+   __typename?: 'Mutation',
+  newAgentName?: Maybe<Scalars['String']>,
 };
 
-/** this schema allows the following mutation: */
-export type MutationUpvotePostArgs = {
-  postId: Scalars['Int']
+export type Rocket = {
+   __typename?: 'Rocket',
+  rocket_id?: Maybe<Scalars['String']>,
+  rocket_name?: Maybe<Scalars['String']>,
+  rocket_type?: Maybe<Scalars['String']>,
 };
 
-export type Post = {
-   __typename?: 'Post',
-  id: Scalars['Int'],
-  title?: Maybe<Scalars['String']>,
-  author?: Maybe<Author>,
-  votes?: Maybe<Scalars['Int']>,
-};
-
-/** the schema allows the following query: */
-export type Query = {
-   __typename?: 'Query',
-  posts?: Maybe<Array<Maybe<Post>>>,
-  postsOf?: Maybe<Array<Maybe<Post>>>,
-  authors?: Maybe<Array<Maybe<Author>>>,
+export type RootQueryType = {
+   __typename?: 'RootQueryType',
+  agents?: Maybe<Array<Maybe<Launch>>>,
+  launch?: Maybe<Launch>,
+  rockets?: Maybe<Array<Maybe<Rocket>>>,
+  rocket?: Maybe<Rocket>,
 };
 
 
-/** the schema allows the following query: */
-export type QueryPostsOfArgs = {
-  authorId?: Maybe<Scalars['Int']>
+export type RootQueryTypeLaunchArgs = {
+  flight_number?: Maybe<Scalars['Int']>
 };
 
+
+export type RootQueryTypeRocketArgs = {
+  id?: Maybe<Scalars['Int']>
+};

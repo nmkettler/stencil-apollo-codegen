@@ -1,16 +1,4 @@
-# query allPosts {
-#   posts {
-#     id
-#     title
-#     votes
-#     author {
-#       id
-#       firstName
-#       lastName
-#     }
-#   }
-# }
-  query AgentQuery {
+  query AllAgents {
     agents {
         name
         agent_online,
