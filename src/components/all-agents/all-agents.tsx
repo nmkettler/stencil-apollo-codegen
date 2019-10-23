@@ -13,7 +13,7 @@ export type AllAgentsQuery = (
   { __typename?: 'RootQueryType' }
   & { agents: Types.Maybe<Array<Types.Maybe<(
     { __typename?: 'Launch' }
-    & Pick<Types.Launch, 'name' | 'agent_online' | 'id' | 'newAgentName'>
+    & Pick<Types.Launch, 'name' | 'agent_online' | 'id' | 'newAgentName' | 'age'>
   )>>> }
 );
  
@@ -28,6 +28,7 @@ export type AllAgentsQuery = (
     agent_online
     id
     newAgentName
+    age
   }
 }
     `;

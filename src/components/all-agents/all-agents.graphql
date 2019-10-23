@@ -3,6 +3,7 @@
         name
         agent_online,
         id,
-        newAgentName
+        newAgentName,
+        age
     }
   }

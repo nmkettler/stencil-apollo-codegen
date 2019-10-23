@@ -20,6 +20,7 @@ export type Launch = {
   rocket?: Maybe<Rocket>,
   name?: Maybe<Scalars['String']>,
   id?: Maybe<Scalars['Int']>,
+  age?: Maybe<Scalars['Int']>,
   agent_online?: Maybe<Scalars['Boolean']>,
   newAgentName?: Maybe<Scalars['String']>,
 };
@@ -27,6 +28,7 @@ export type Launch = {
 export type Mutation = {
    __typename?: 'Mutation',
   newAgentName?: Maybe<Scalars['String']>,
+  incrementAge?: Maybe<Scalars['Int']>,
 };
 
 export type Rocket = {

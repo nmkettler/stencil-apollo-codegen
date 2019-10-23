@@ -13,12 +13,18 @@ export namespace Components {
   interface ApolloAllAgents {
     'renderer': import('stencil-apollo').QueryRenderer<AllAgentsQuery, AllAgentsQueryVariables>;
   }
-  interface ApolloUpdateAgent {
-    'renderer': import('stencil-apollo').MutationRenderer<UpdateAgentMutation, UpdateAgentMutationVariables>;
+  interface ApolloAllAges {
+    'renderer': import('stencil-apollo').QueryRenderer<AllAgesQuery, AllAgesQueryVariables>;
+  }
+  interface ApolloIncrementAge {
+    'renderer': import('stencil-apollo').MutationRenderer<IncrementAgeMutation, IncrementAgeMutationVariables>;
   }
   interface ListAllAgents {
     'first': string;
     'last': string;
+  }
+  interface ListAllAges {
+    'testProp': string;
   }
 }
 
@@ -31,10 +37,16 @@ declare global {
     new (): HTMLApolloAllAgentsElement;
   };
 
-  interface HTMLApolloUpdateAgentElement extends Components.ApolloUpdateAgent, HTMLStencilElement {}
-  const HTMLApolloUpdateAgentElement: {
-    prototype: HTMLApolloUpdateAgentElement;
-    new (): HTMLApolloUpdateAgentElement;
+  interface HTMLApolloAllAgesElement extends Components.ApolloAllAges, HTMLStencilElement {}
+  const HTMLApolloAllAgesElement: {
+    prototype: HTMLApolloAllAgesElement;
+    new (): HTMLApolloAllAgesElement;
+  };
+
+  interface HTMLApolloIncrementAgeElement extends Components.ApolloIncrementAge, HTMLStencilElement {}
+  const HTMLApolloIncrementAgeElement: {
+    prototype: HTMLApolloIncrementAgeElement;
+    new (): HTMLApolloIncrementAgeElement;
   };
 
   interface HTMLListAllAgentsElement extends Components.ListAllAgents, HTMLStencilElement {}
@@ -42,10 +54,18 @@ declare global {
     prototype: HTMLListAllAgentsElement;
     new (): HTMLListAllAgentsElement;
   };
+
+  interface HTMLListAllAgesElement extends Components.ListAllAges, HTMLStencilElement {}
+  const HTMLListAllAgesElement: {
+    prototype: HTMLListAllAgesElement;
+    new (): HTMLListAllAgesElement;
+  };
   interface HTMLElementTagNameMap {
     'apollo-all-agents': HTMLApolloAllAgentsElement;
-    'apollo-update-agent': HTMLApolloUpdateAgentElement;
+    'apollo-all-ages': HTMLApolloAllAgesElement;
+    'apollo-increment-age': HTMLApolloIncrementAgeElement;
     'list-all-agents': HTMLListAllAgentsElement;
+    'list-all-ages': HTMLListAllAgesElement;
   }
 }
 
@@ -53,18 +73,26 @@ declare namespace LocalJSX {
   interface ApolloAllAgents {
     'renderer'?: import('stencil-apollo').QueryRenderer<AllAgentsQuery, AllAgentsQueryVariables>;
   }
-  interface ApolloUpdateAgent {
-    'renderer'?: import('stencil-apollo').MutationRenderer<UpdateAgentMutation, UpdateAgentMutationVariables>;
+  interface ApolloAllAges {
+    'renderer'?: import('stencil-apollo').QueryRenderer<AllAgesQuery, AllAgesQueryVariables>;
+  }
+  interface ApolloIncrementAge {
+    'renderer'?: import('stencil-apollo').MutationRenderer<IncrementAgeMutation, IncrementAgeMutationVariables>;
   }
   interface ListAllAgents {
     'first'?: string;
     'last'?: string;
   }
+  interface ListAllAges {
+    'testProp'?: string;
+  }
 
   interface IntrinsicElements {
     'apollo-all-agents': ApolloAllAgents;
-    'apollo-update-agent': ApolloUpdateAgent;
+    'apollo-all-ages': ApolloAllAges;
+    'apollo-increment-age': ApolloIncrementAge;
     'list-all-agents': ListAllAgents;
+    'list-all-ages': ListAllAges;
   }
 }
 
@@ -75,8 +103,10 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'apollo-all-agents': LocalJSX.ApolloAllAgents & JSXBase.HTMLAttributes<HTMLApolloAllAgentsElement>;
-      'apollo-update-agent': LocalJSX.ApolloUpdateAgent & JSXBase.HTMLAttributes<HTMLApolloUpdateAgentElement>;
+      'apollo-all-ages': LocalJSX.ApolloAllAges & JSXBase.HTMLAttributes<HTMLApolloAllAgesElement>;
+      'apollo-increment-age': LocalJSX.ApolloIncrementAge & JSXBase.HTMLAttributes<HTMLApolloIncrementAgeElement>;
       'list-all-agents': LocalJSX.ListAllAgents & JSXBase.HTMLAttributes<HTMLListAllAgentsElement>;
+      'list-all-ages': LocalJSX.ListAllAges & JSXBase.HTMLAttributes<HTMLListAllAgesElement>;
     }
   }
 }
