@@ -12,8 +12,8 @@ import { Component, Prop, h } from '@stencil/core';
 export type AllAgesQuery = (
   { __typename?: 'RootQueryType' }
   & { agents: Types.Maybe<Array<Types.Maybe<(
-    { __typename?: 'Launch' }
-    & Pick<Types.Launch, 'age'>
+    { __typename?: 'Agents' }
+    & Pick<Types.Agents, 'age'>
   )>>> }
 );
  
