@@ -1,4 +1,4 @@
 /node_modules
 node_modules
 .stencil
-www/build
+www
